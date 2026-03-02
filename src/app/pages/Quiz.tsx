@@ -591,11 +591,11 @@ export function Quiz() {
               {/* Checkbox Agreement */}
               <div className="mb-6">
                 <label 
-                  className="flex items-center gap-3 cursor-pointer group"
+                  className="flex items-start gap-3 cursor-pointer group"
                   onClick={() => setAgreedToTerms(!agreedToTerms)}
                 >
                   <div 
-                    className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${
+                    className={`w-5 h-5 flex-shrink-0 rounded border-2 flex items-center justify-center transition-all ${
                       agreedToTerms 
                         ? 'bg-white border-white' 
                         : 'bg-white/10 border-white/40 group-hover:border-white/60'
@@ -604,11 +604,11 @@ export function Quiz() {
                     {agreedToTerms && <Check className="w-4 h-4 text-black" strokeWidth={3} />}
                   </div>
                   <span 
-                    className="text-white/90"
+                    className="text-white/90 flex-1"
                     style={{
                       fontFamily: "Verdana, sans-serif",
-                      fontSize: "0.9375rem",
-                      lineHeight: 1.4
+                      fontSize: "0.875rem",
+                      lineHeight: 1.5
                     }}
                   >
                     I agree to the terms and understand this is for entertainment purposes only

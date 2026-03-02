@@ -10,13 +10,14 @@ import paypalIcon from "figma:asset/64eeb00008c3479b5e72d5bbfe2a49169d3d8425.png
 
 interface HeroPageProps {
   backgroundImage: string;
+  bookCoverImage: string;
   title: string;
   plotline: string;
   review: string;
   reviewer: string;
 }
 
-export function HeroPage({ backgroundImage, title, plotline, review, reviewer }: HeroPageProps) {
+export function HeroPage({ backgroundImage, bookCoverImage, title, plotline, review, reviewer }: HeroPageProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -218,7 +219,7 @@ To read the complete story, purchase the full book on Amazon, Kindle, or Audible
                         position: 'absolute',
                         width: '100%',
                         height: '100%',
-                        backgroundImage: `url(${backgroundImage})`,
+                        backgroundImage: `url(${bookCoverImage})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         borderRadius: '3px',

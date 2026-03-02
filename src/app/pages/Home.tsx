@@ -9,9 +9,14 @@ import { Mail, ArrowUp, CheckCircle2 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
-import husbandCover from "figma:asset/7602c6622cbbbeaa79da9f59efd10f787346f4ca.png";
-import mountainCover from "figma:asset/0f36f0609a2dc926f97e121e509a87c4536f73ad.png";
-import flightCover from "figma:asset/18aee340f956065c8196ea7d3de2cc0fb667d778.png";
+// Background images (keyhole designs without text)
+import husbandBg from "figma:asset/7602c6622cbbbeaa79da9f59efd10f787346f4ca.png";
+import mountainBg from "figma:asset/0f36f0609a2dc926f97e121e509a87c4536f73ad.png";
+import flightBg from "figma:asset/18aee340f956065c8196ea7d3de2cc0fb667d778.png";
+// Book cover images (with text for mockups and catalog)
+import husbandCover from "figma:asset/78a836d1f4187cd9762644c9fe81447294d6e1ed.png";
+import mountainCover from "figma:asset/2a74e62b093ca2053aa6ecf724b49aea0afc87a8.png";
+import flightCover from "figma:asset/ab35b7179deb454b83580783bea0b637ea824084.png";
 
 export function Home() {
   const navigate = useNavigate();
@@ -242,7 +247,8 @@ export function Home() {
       <div id="scroll-container" className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth" style={{ scrollSnapType: 'y mandatory', scrollSnapStop: 'always' }} role="main">
         {/* Book 1: The Husband Killed Her */}
         <HeroPage
-          backgroundImage={husbandCover}
+          backgroundImage={husbandBg}
+          bookCoverImage={husbandCover}
           title="The Husband Killed Her"
           plotline="In a quiet suburban neighborhood, a woman's mysterious death unravels a web of dark secrets. As Detective Sarah Morrison digs deeper, she discovers that the perfect marriage was built on lies, betrayal, and a love turned deadly."
           review="A breathtaking thriller that keeps you guessing until the very last page. Absolutely unputdownable!"
@@ -251,7 +257,8 @@ export function Home() {
         
         {/* Book 2: The Mountain Killed Her */}
         <HeroPage
-          backgroundImage={mountainCover}
+          backgroundImage={mountainBg}
+          bookCoverImage={mountainCover}
           title="The Mountain Killed Her"
           plotline="When a hiking expedition goes tragically wrong in the remote Swiss Alps, journalist Emma Clarke investigates what really happened on that fateful climb. What she uncovers is a chilling conspiracy where nature itself becomes the perfect alibi."
           review="A masterpiece of suspense set against stunning alpine beauty. This is thriller writing at its finest."
@@ -260,7 +267,8 @@ export function Home() {
         
         {/* Book 3: The Flight Killed Her */}
         <HeroPage
-          backgroundImage={flightCover}
+          backgroundImage={flightBg}
+          bookCoverImage={flightCover}
           title="The Flight Killed Her"
           plotline="On a turbulent transatlantic flight, a young woman vanishes without a trace. FBI agent Kate Reynolds must piece together the final hours aboard Flight 447, where every passenger had a motive, and the truth is more terrifying than anyone could imagine."
           review="A high-altitude thriller that soars to dizzying heights. Nail-biting suspense from takeoff to landing."
