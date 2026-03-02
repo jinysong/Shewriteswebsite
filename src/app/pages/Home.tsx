@@ -478,6 +478,7 @@ export function Home() {
             </div>
             
             <Button 
+              onClick={() => window.open('https://www.amazon.com', '_blank', 'noopener,noreferrer')}
               className="px-8 py-4 bg-white text-red-900 hover:bg-white/90 font-bold text-lg rounded-md transition-all hover:scale-105 shadow-2xl"
               style={{ fontFamily: "Verdana, sans-serif" }}
               aria-label="Purchase complete book bundle for $29.99"
