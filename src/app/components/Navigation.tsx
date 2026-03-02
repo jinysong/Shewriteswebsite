@@ -21,7 +21,7 @@ export function Navigation() {
         className="bg-black/30 backdrop-blur-md text-white border-white/30 hover:bg-black/50 hover:text-white transition-all"
       >
         <User className="w-4 h-4 mr-2" />
-        Author Profile
+        Author
       </Button>
     </div>
   );

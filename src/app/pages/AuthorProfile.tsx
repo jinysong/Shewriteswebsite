@@ -1,180 +1,102 @@
 import { useNavigate } from "react-router";
-import { ArrowLeft, Mail, Twitter, Instagram, Globe } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "../components/ui/button";
+import authorImage from "figma:asset/b942373ac7016ff4a9f5994f171ec68bc28031f9.png";
 
 export function AuthorProfile() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
           <Button
             onClick={() => navigate("/")}
             variant="ghost"
-            className="text-white hover:bg-white/10"
+            className="text-gray-700 hover:bg-gray-100"
+            style={{ fontFamily: "Verdana, sans-serif" }}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Button>
           <h1 
-            className="text-white text-4xl"
+            className="text-gray-900"
             style={{
-              fontFamily: "'Playfair Display', serif",
-              fontWeight: 900
+              fontFamily: "'Notable', sans-serif",
+              fontSize: "clamp(1.5rem, 3vw, 2rem)",
+              lineHeight: 1.2
             }}
           >
-            Author Profile
+            About the Author
           </h1>
-          <div className="w-24" /> {/* Spacer for centering */}
+          <div className="w-32" />
         </div>
       </div>
 
       {/* Content */}
-      <div className="pt-32 pb-16 px-8">
+      <div className="pt-24 pb-16 px-8">
         <div className="max-w-4xl mx-auto">
-          {/* Author Card */}
-          <div className="bg-black/30 backdrop-blur-md border border-white/20 rounded-2xl p-12">
-            <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
-              {/* Author Image Placeholder */}
-              <div className="w-48 h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex-shrink-0 flex items-center justify-center">
-                <span 
-                  className="text-white text-6xl"
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontWeight: 900
-                  }}
-                >
-                  A.M.
-                </span>
-              </div>
+          {/* Author Profile Section */}
+          <div>
+            {/* Author Photo - Float Left */}
+            <img
+              src={authorImage}
+              alt="Ruby Satana"
+              className="w-80 h-auto rounded-lg shadow-lg float-left mr-6 mb-4"
+            />
 
-              {/* Author Info */}
-              <div className="flex-1">
-                <h2 
-                  className="text-white text-5xl mb-4"
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontWeight: 900
-                  }}
-                >
-                  Alexandra Morgan
-                </h2>
-                <p 
-                  className="text-purple-300 text-xl mb-6"
-                  style={{
-                    fontFamily: "'Crimson Text', serif",
-                    fontStyle: "italic"
-                  }}
-                >
-                  Bestselling Thriller Author
-                </p>
-                
-                {/* Social Links */}
-                <div className="flex gap-4">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="bg-white/10 text-white border-white/30 hover:bg-white/20"
-                  >
-                    <Mail className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="bg-white/10 text-white border-white/30 hover:bg-white/20"
-                  >
-                    <Twitter className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="bg-white/10 text-white border-white/30 hover:bg-white/20"
-                  >
-                    <Instagram className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="bg-white/10 text-white border-white/30 hover:bg-white/20"
-                  >
-                    <Globe className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
-            </div>
+            {/* Author Bio - Wraps around image */}
+            <div className="space-y-6 text-gray-700">
+              <p 
+                style={{
+                  fontFamily: "Verdana, sans-serif",
+                  fontSize: "1.125rem",
+                  lineHeight: 1.8
+                }}
+              >
+                Writing under the moniker Ruby Satana, this Toronto-bred author has turned "overthinking" and "daydreaming" into an art form. While her physical self resides in a small but cozy condo with two demanding feline roommates, her mind is usually miles away, navigating the improbable scenarios that serve as her favorite escape.
+              </p>
 
-            {/* Bio */}
-            <div className="space-y-4">
-              <h3 
-                className="text-white text-2xl mb-4"
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontWeight: 700
-                }}
-              >
-                About the Author
-              </h3>
               <p 
-                className="text-white/80"
                 style={{
-                  fontFamily: "'Crimson Text', serif",
+                  fontFamily: "Verdana, sans-serif",
                   fontSize: "1.125rem",
-                  lineHeight: 1.7
+                  lineHeight: 1.8
                 }}
               >
-                Alexandra Morgan is an internationally bestselling author known for her gripping psychological thrillers that explore the darkest corners of human nature. With a background in criminal psychology, she brings authenticity and depth to every twisted tale.
+                For Ruby, writing isn't just a hobby; it's the compass and sword she uses to navigate the choppy waters of anxiety and the difficult bits of life. It is the creative anchor that keeps her grounded while her imagination reaches for the shore.
               </p>
-              <p 
-                className="text-white/80"
-                style={{
-                  fontFamily: "'Crimson Text', serif",
-                  fontSize: "1.125rem",
-                  lineHeight: 1.7
-                }}
-              >
-                Her debut novel became an instant sensation, praised for its intricate plotting and unforgettable characters. When she's not writing, Alexandra enjoys hiking in remote locations—often finding inspiration in the isolation and beauty of nature's most dangerous landscapes.
-              </p>
-              <p 
-                className="text-white/80"
-                style={{
-                  fontFamily: "'Crimson Text', serif",
-                  fontSize: "1.125rem",
-                  lineHeight: 1.7
-                }}
-              >
-                She currently resides in the Pacific Northwest, where the misty forests and dramatic coastlines fuel her imagination.
-              </p>
-            </div>
 
-            {/* Awards Section */}
-            <div className="mt-8 pt-8 border-t border-white/20">
-              <h3 
-                className="text-white text-2xl mb-4"
+              <p 
                 style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontWeight: 700
+                  fontFamily: "Verdana, sans-serif",
+                  fontSize: "1.125rem",
+                  lineHeight: 1.8
                 }}
               >
-                Awards & Recognition
-              </h3>
-              <ul 
-                className="space-y-2 text-white/80"
-                style={{
-                  fontFamily: "'Crimson Text', serif",
-                  fontSize: "1.125rem"
-                }}
-              >
-                <li>• New York Times Bestselling Author</li>
-                <li>• Edgar Award Nominee for Best First Novel</li>
-                <li>• Thriller Award Winner - Best Psychological Thriller</li>
-                <li>• Goodreads Choice Award Nominee</li>
-              </ul>
+                Her current life goals include quitting her boring day job, relocating to a tropical beach with a coconut in hand, and convincing her two cats that she is, in fact, the one in charge. In her eyes, the best job in the world is simply to be a full-time reader, losing herself in the pages of a thousand different minds and a million lifetimes.
+              </p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-50 text-gray-600 py-6 px-8 border-t border-gray-200">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <p style={{ fontFamily: "Verdana, sans-serif", fontSize: "0.875rem" }}>
+            Copyright © 2026, Ruby Satana | She Writes in Her Spare Time Productions Company
+          </p>
+          <button
+            onClick={() => navigate("/privacy")}
+            className="text-gray-600 hover:text-gray-900 transition-colors underline"
+            style={{ fontFamily: "Verdana, sans-serif", fontSize: "0.875rem" }}
+          >
+            Privacy Policy
+          </button>
+        </div>
+      </footer>
     </div>
   );
 }
