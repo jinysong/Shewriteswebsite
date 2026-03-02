@@ -28,11 +28,11 @@ export function HeroPage({ backgroundImage, title, plotline, review, reviewer }:
       <div className="absolute inset-0 bg-black/40" />
       
       {/* Content */}
-      <div className="relative h-full flex items-center justify-center px-8 md:px-16 max-w-7xl mx-auto py-16">
+      <div className="relative h-full flex items-center justify-center px-8 md:px-16 max-w-7xl mx-auto py-20 md:py-28">
         <div className="flex flex-col items-center w-full">
           {/* Book Title with Custom Font - Full Width Centered */}
           <h1 
-            className="text-white text-center mb-6"
+            className="text-white text-center mb-8"
             style={{
               fontFamily: "'Notable', sans-serif",
               fontSize: "clamp(2.5rem, 6vw, 5rem)",
@@ -46,7 +46,7 @@ export function HeroPage({ backgroundImage, title, plotline, review, reviewer }:
           </h1>
 
           {/* Middle Section: Book Mockup + Plotline & Buttons */}
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 mb-8 w-full justify-center">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 mb-10 w-full justify-center">
             {/* Plotline & Purchase Buttons */}
             <div className="flex flex-col items-center md:items-start">
               {/* Plotline */}
@@ -65,6 +65,7 @@ export function HeroPage({ backgroundImage, title, plotline, review, reviewer }:
               {/* Purchase Buttons */}
               <div className="flex flex-wrap gap-2 justify-center md:justify-start max-w-3xl">
                 <Button
+                  onClick={() => window.open('https://www.amazon.com/kindle', '_blank', 'noopener,noreferrer')}
                   className="bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-md hover:from-white/30 hover:to-white/20 text-white border border-white/30 shadow-lg hover:shadow-xl transition-all hover:scale-105 px-2 py-1 h-auto"
                 >
                   <img src={kindleIcon} alt="Kindle" className="w-4 h-4 mr-1" />
@@ -73,6 +74,7 @@ export function HeroPage({ backgroundImage, title, plotline, review, reviewer }:
                   </span>
                 </Button>
                 <Button
+                  onClick={() => window.open('https://www.audible.com', '_blank', 'noopener,noreferrer')}
                   className="bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-md hover:from-white/30 hover:to-white/20 text-white border border-white/30 shadow-lg hover:shadow-xl transition-all hover:scale-105 px-2 py-1 h-auto"
                 >
                   <img src={audibleIcon} alt="Audible" className="w-4 h-4 mr-1" />
@@ -81,6 +83,7 @@ export function HeroPage({ backgroundImage, title, plotline, review, reviewer }:
                   </span>
                 </Button>
                 <Button
+                  onClick={() => window.open('https://www.amazon.com', '_blank', 'noopener,noreferrer')}
                   className="bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-md hover:from-white/30 hover:to-white/20 text-white border border-white/30 shadow-lg hover:shadow-xl transition-all hover:scale-105 px-2 py-1 h-auto"
                 >
                   <img src={amazonIcon} alt="Amazon" className="w-4 h-4 mr-1" />
