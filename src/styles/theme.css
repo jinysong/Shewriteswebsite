@@ -178,4 +178,22 @@
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
   }
+
+  /* Enhanced smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom smooth scrolling for snap container */
+  #scroll-container {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  /* Optimize scrolling performance */
+  #scroll-container > * {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }

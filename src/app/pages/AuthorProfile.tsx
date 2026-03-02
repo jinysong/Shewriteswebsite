@@ -1,14 +1,39 @@
 import { useNavigate } from "react-router";
 import { ArrowLeft, Facebook } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { SocialMetaTags, authorPageMeta } from "../components/SocialMetaTags";
+import { SEOMetaTags, seoConfig, authorSchema } from "../utils/seo";
+import { usePageTracking } from "../hooks/useAnalytics";
+import { useEffect } from "react";
 import authorImage from "figma:asset/b942373ac7016ff4a9f5994f171ec68bc28031f9.png";
 import goodreadsIcon from "figma:asset/f4626c651971ea505d97d10043a72f3dd657830d.png";
 
 export function AuthorProfile() {
   const navigate = useNavigate();
 
+  usePageTracking("Author Profile");
+
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Meta Tags */}
+      <SEOMetaTags
+        title={seoConfig.author.title}
+        description={seoConfig.author.description}
+        keywords={seoConfig.author.keywords}
+        canonical={seoConfig.author.canonical}
+        ogImage={authorImage}
+        structuredData={authorSchema}
+      />
+
+      {/* Social Media Meta Tags */}
+      <SocialMetaTags
+        title={authorPageMeta.title}
+        description={authorPageMeta.description}
+        tags={authorPageMeta.tags}
+        type={authorPageMeta.type}
+        image={authorImage}
+      />
+      
       {/* Header */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">

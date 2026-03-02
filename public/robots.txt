@@ -1,0 +1,39 @@
+# robots.txt for Ruby Satana Thriller Books Website
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.rubysatana.com/sitemap.xml
+
+# Crawl-delay (optional, helps prevent overload)
+Crawl-delay: 1
+
+# Disallow any admin or private areas (if they exist)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.pdf$
+
+# Allow social media bots for better sharing
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Google-specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing-specific rules
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

@@ -1,7 +1,11 @@
-import { useNavigate } from "react-router";
-import { ArrowLeft, Search, Star } from "lucide-react";
-import { Button } from "../components/ui/button";
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { ArrowLeft, Search } from "lucide-react";
+import { Button } from "../components/ui/button";
+import { SocialMetaTags, catalogPageMeta } from "../components/SocialMetaTags";
+import { SEOMetaTags, seoConfig, Breadcrumb } from "../utils/seo";
+import { usePageTracking } from "../hooks/useAnalytics";
+import { trackSearch } from "../utils/analytics";
 import husbandCover from "figma:asset/78a836d1f4187cd9762644c9fe81447294d6e1ed.png";
 import mountainCover from "figma:asset/2a74e62b093ca2053aa6ecf724b49aea0afc87a8.png";
 import flightCover from "figma:asset/ab35b7179deb454b83580783bea0b637ea824084.png";
@@ -57,10 +61,35 @@ export function Catalog() {
     book.publishDate.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  usePageTracking("Catalog");
+
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Catalog", href: "/catalog" }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Meta Tags */}
+      <SEOMetaTags
+        title={seoConfig.catalog.title}
+        description={seoConfig.catalog.description}
+        keywords={seoConfig.catalog.keywords}
+        canonical={seoConfig.catalog.canonical}
+        ogImage={husbandCover}
+      />
+
+      {/* Social Media Meta Tags */}
+      <SocialMetaTags
+        title={catalogPageMeta.title}
+        description={catalogPageMeta.description}
+        tags={catalogPageMeta.tags}
+        type={catalogPageMeta.type}
+        image={husbandCover}
+      />
+      
       {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-4">
             <Button
@@ -68,8 +97,9 @@ export function Catalog() {
               variant="ghost"
               className="text-gray-700 hover:bg-gray-100"
               style={{ fontFamily: "Verdana, sans-serif" }}
+              aria-label="Return to home page"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <ArrowLeft className="w-4 h-4 mr-2" aria-hidden="true" />
               Back to Home
             </Button>
             <h1 
@@ -82,35 +112,41 @@ export function Catalog() {
             >
               Book Catalog
             </h1>
-            <div className="w-32" />
+            <div className="w-32" aria-hidden="true" />
           </div>
 
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" aria-hidden="true" />
               <input
                 type="text"
                 placeholder="Search by title or publish date..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  trackSearch(e.target.value);
+                }}
                 className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition-colors"
                 style={{ fontFamily: "Verdana, sans-serif", fontSize: "1rem" }}
+                aria-label="Search books by title or publish date"
               />
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Content */}
-      <div className="pt-40 pb-16 px-6">
+      <main className="pt-40 pb-16 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Book Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5" role="list" aria-label="Book catalog">
             {filteredBooks.map((book) => (
-              <div
+              <article
                 key={book.id}
                 className="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+                role="listitem"
+                aria-label={`${book.title}, published ${book.publishDate}, ${book.rating} stars, ${book.price}`}
               >
                 {/* Book Cover Image */}
                 <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
@@ -160,7 +196,7 @@ export function Catalog() {
                 {/* Book Info */}
                 <div className="p-3">
                   {/* Star Rating */}
-                  <div className="flex items-center gap-0.5 mb-2">
+                  <div className="flex items-center gap-0.5 mb-2" role="img" aria-label={`${book.rating} out of 5 stars, ${book.ratingCount} reviews`}>
                     {[...Array(5)].map((_, i) => (
                       <svg
                         key={i}
@@ -168,17 +204,18 @@ export function Catalog() {
                           i < book.rating ? 'fill-orange-400 text-orange-400' : 'fill-gray-200 text-gray-200'
                         }`}
                         viewBox="0 0 20 20"
+                        aria-hidden="true"
                       >
                         <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                       </svg>
                     ))}
-                    <span className="text-xs text-gray-500 ml-1" style={{ fontFamily: "Verdana, sans-serif" }}>
+                    <span className="text-xs text-gray-700 ml-1" style={{ fontFamily: "Verdana, sans-serif" }} aria-hidden="true">
                       ({book.ratingCount})
                     </span>
                   </div>
                   
                   {/* Publish Date */}
-                  <p className="text-xs text-gray-600 mb-2" style={{ fontFamily: "Verdana, sans-serif" }}>
+                  <p className="text-xs text-gray-700 mb-2" style={{ fontFamily: "Verdana, sans-serif" }}>
                     Published : {book.publishDate}
                   </p>
                   
@@ -205,7 +242,7 @@ export function Catalog() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 
@@ -235,7 +272,7 @@ export function Catalog() {
             </div>
           )}
         </div>
-      </div>
+      </main>
 
       {/* Footer */}
       <footer className="bg-gray-50 text-gray-600 py-6 px-8 border-t border-gray-200">

@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { ArrowLeft, Check, Facebook, Linkedin, Twitter, Share2 } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { SocialMetaTags, quizPageMeta } from "../components/SocialMetaTags";
+import { SEOMetaTags, seoConfig } from "../utils/seo";
+import { usePageTracking } from "../hooks/useAnalytics";
+import { trackQuizStart, trackQuizComplete, trackQuizAnswer, trackSocialShare } from "../utils/analytics";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from "recharts";
 import husbandCover from "figma:asset/78a836d1f4187cd9762644c9fe81447294d6e1ed.png";
 import mountainCover from "figma:asset/2a74e62b093ca2053aa6ecf724b49aea0afc87a8.png";
@@ -128,6 +132,9 @@ export function Quiz() {
   const [showDisclaimer, setShowDisclaimer] = useState(true);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
+  // Analytics tracking
+  usePageTracking("Quiz Page");
+
   const handleAnswer = (trait: string) => {
     const newAnswers = [...answers, trait];
     setAnswers(newAnswers);
@@ -143,6 +150,7 @@ export function Quiz() {
 
       const winner = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0] as keyof typeof results;
       setResult(winner);
+      trackQuizComplete(winner, counts);
     }
   };
 
@@ -157,6 +165,7 @@ export function Quiz() {
   const startQuiz = () => {
     if (agreedToTerms) {
       setShowDisclaimer(false);
+      trackQuizStart();
     }
   };
 
@@ -211,6 +220,7 @@ export function Quiz() {
       }
       if (url) {
         window.open(url, '_blank', 'noopener,noreferrer,width=600,height=400');
+        trackSocialShare(platform);
       }
     };
     
@@ -470,6 +480,24 @@ export function Quiz() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 to-black flex flex-col">
+      {/* SEO Meta Tags */}
+      <SEOMetaTags
+        title={seoConfig.quiz.title}
+        description={seoConfig.quiz.description}
+        keywords={seoConfig.quiz.keywords}
+        canonical={seoConfig.quiz.canonical}
+        ogImage={husbandCover}
+      />
+
+      {/* Social Media Meta Tags */}
+      <SocialMetaTags
+        title={quizPageMeta.title}
+        description={quizPageMeta.description}
+        tags={quizPageMeta.tags}
+        type={quizPageMeta.type}
+        image={husbandCover}
+      />
+      
       {/* Header */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-white/20">
         <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
@@ -535,7 +563,7 @@ export function Quiz() {
                   <strong>Important Disclaimers:</strong>
                 </p>
 
-                <ul className="list-disc list-inside space-y-1 text-white/80 pl-4" style={{
+                <ul className="list-disc list-inside space-y-1 text-white/90 pl-4" style={{
                   fontFamily: "Verdana, sans-serif",
                   fontSize: "0.8125rem",
                   lineHeight: 1.5
@@ -615,13 +643,13 @@ export function Quiz() {
             <div className="mb-8">
               <div className="flex justify-between items-center mb-2">
                 <span 
-                  className="text-white/70"
+                  className="text-white/90"
                   style={{ fontFamily: "Verdana, sans-serif", fontSize: "0.875rem" }}
                 >
                   Question {currentQuestion + 1} of {questions.length}
                 </span>
                 <span 
-                  className="text-white/70"
+                  className="text-white/90"
                   style={{ fontFamily: "Verdana, sans-serif", fontSize: "0.875rem" }}
                 >
                   {Math.round(((currentQuestion + 1) / questions.length) * 100)}%
@@ -652,7 +680,10 @@ export function Quiz() {
                 {questions[currentQuestion].answers.map((answer, index) => (
                   <button
                     key={index}
-                    onClick={() => handleAnswer(answer.trait)}
+                    onClick={() => {
+                      trackQuizAnswer(currentQuestion + 1, answer.trait);
+                      handleAnswer(answer.trait);
+                    }}
                     className="w-full text-left p-4 rounded-lg bg-white/10 border border-white/30 hover:bg-white/20 hover:border-white/50 transition-all group"
                   >
                     <span 
