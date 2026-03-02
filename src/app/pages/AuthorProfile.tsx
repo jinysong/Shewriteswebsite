@@ -72,7 +72,7 @@ export function AuthorProfile() {
                   </svg>
                 </a>
                 <a 
-                  href="https://goodreads.com" 
+                  href="https://www.goodreads.com/user/show/199234395-ruby-satana" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-amber-700 transition-colors"

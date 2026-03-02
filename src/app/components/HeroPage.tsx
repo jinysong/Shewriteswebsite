@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Star } from "lucide-react";
 import { Button } from "./ui/button";
+import { motion } from "motion/react";
 import amazonIcon from "figma:asset/6bcb8a0b30479c584e3accc9e587519bf2392a08.png";
 import kindleIcon from "figma:asset/76aa1becd33846b7c9ba9b5c6ed3b60e8c4964a6.png";
 import audibleIcon from "figma:asset/7744cba0999164c7f99df791d2697e0a436e871a.png";
@@ -95,7 +96,17 @@ export function HeroPage({ backgroundImage, title, plotline, review, reviewer }:
             </div>
 
             {/* 3D Book Mockup */}
-            <div className="flex-shrink-0">
+            <motion.div 
+              className="flex-shrink-0"
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ 
+                duration: 0.8, 
+                ease: [0.25, 0.46, 0.45, 0.94],
+                opacity: { duration: 0.6 }
+              }}
+            >
               <div 
                 className="relative"
                 style={{
@@ -157,7 +168,7 @@ export function HeroPage({ backgroundImage, title, plotline, review, reviewer }:
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
           
           {/* Review Quote - Full Width Centered */}
