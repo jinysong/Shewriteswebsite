@@ -103,15 +103,15 @@ export function Home() {
         <div className="w-screen h-screen snap-start flex flex-col overflow-y-auto">
           {/* Top Panel - Newsletter Subscription */}
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col items-center justify-center p-8 md:p-12">
-            <Mail className="w-16 h-16 text-white mb-6" strokeWidth={1.5} />
             <h2 
-              className="text-white text-center mb-3"
+              className="text-white text-center mb-3 flex items-center gap-3"
               style={{
                 fontFamily: "'Notable', sans-serif",
                 fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
                 lineHeight: 1.2
               }}
             >
+              <Mail className="w-12 h-12" strokeWidth={1.5} />
               Stay Updated
             </h2>
             <p 
@@ -162,19 +162,52 @@ export function Home() {
               By clicking subscribe, I acknowledge that I have read and agree to the{" "}
               <button
                 onClick={() => navigate("/privacy#terms-of-use")}
-                className="underline hover:text-white/80 transition-colors"
+                className="underline hover:text-white/80 transition-colors text-white/60 text-xs"
+                style={{ fontFamily: "Verdana, sans-serif" }}
               >
                 Terms of Use
               </button>
               {" "}and{" "}
               <button
                 onClick={() => navigate("/privacy")}
-                className="underline hover:text-white/80 transition-colors"
+                className="underline hover:text-white/80 transition-colors text-white/60 text-xs"
+                style={{ fontFamily: "Verdana, sans-serif" }}
               >
                 Privacy Policy
               </button>
               .
             </p>
+          </div>
+
+          {/* Dark Triad Quiz Section */}
+          <div className="bg-gradient-to-br from-purple-900 to-purple-950 flex flex-col items-center justify-center p-8 md:p-12">
+            <h2 
+              className="text-white text-center mb-3"
+              style={{
+                fontFamily: "'Notable', sans-serif",
+                fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+                lineHeight: 1.2
+              }}
+            >
+              Discover Your Dark Side
+            </h2>
+            <p 
+              className="text-white/80 text-center mb-8 px-8 max-w-2xl"
+              style={{
+                fontFamily: "Verdana, sans-serif",
+                fontSize: "clamp(0.95rem, 1.2vw, 1.125rem)",
+                lineHeight: 1.6
+              }}
+            >
+              Take the Dark Triad personality quiz to uncover which psychological thriller resonates with your darker traits. Are you cunning like a manipulative husband, cold like a mountain, or deceptive like a vanishing act?
+            </p>
+            <Button 
+              onClick={() => navigate("/quiz")}
+              className="px-8 py-4 bg-white text-purple-900 hover:bg-white/90 font-bold text-lg rounded-md transition-all hover:scale-105 shadow-2xl"
+              style={{ fontFamily: "Verdana, sans-serif" }}
+            >
+              TAKE THE QUIZ
+            </Button>
           </div>
 
           {/* Bottom Panel - Bundle Offer */}
