@@ -97,14 +97,14 @@ To read the complete story, purchase the full book on Amazon, Kindle, or Audible
       <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
       
       {/* Content */}
-      <div className="relative h-full flex items-center justify-center px-8 md:px-16 max-w-7xl mx-auto py-20 md:py-28">
+      <div className="relative h-full flex items-center justify-center px-8 md:px-16 max-w-7xl mx-auto py-12 md:py-16">
         <div className="flex flex-col items-center w-full">
           {/* Author Attribution */}
           <div 
-            className="text-white/80 text-center mb-2"
+            className="text-white/80 text-center mb-1"
             style={{
               fontFamily: "'Times New Roman', Times, serif",
-              fontSize: "clamp(1rem, 2vw, 1.5rem)",
+              fontSize: "clamp(0.875rem, 1.5vw, 1.25rem)",
               fontStyle: "italic",
               letterSpacing: "0.03em",
               textShadow: "0 2px 10px rgba(0,0,0,0.7)"
@@ -115,10 +115,10 @@ To read the complete story, purchase the full book on Amazon, Kindle, or Audible
 
           {/* Book Title with Custom Font - Full Width Centered */}
           <h1 
-            className="text-white text-center mb-8"
+            className="text-white text-center mb-4 md:mb-6"
             style={{
               fontFamily: "'Notable', sans-serif",
-              fontSize: "clamp(2.5rem, 6vw, 5rem)",
+              fontSize: "clamp(2rem, 5vw, 4rem)",
               fontWeight: 400,
               lineHeight: 1.1,
               textShadow: "0 4px 20px rgba(0,0,0,0.7), 0 0 40px rgba(0,0,0,0.5)",
@@ -129,16 +129,16 @@ To read the complete story, purchase the full book on Amazon, Kindle, or Audible
           </h1>
 
           {/* Middle Section: Book Mockup + Plotline & Buttons */}
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 mb-10 w-full justify-center">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 mb-6 md:mb-8 w-full justify-center">
             {/* Plotline & Purchase Buttons */}
             <div className="flex flex-col items-center md:items-start">
               {/* Plotline */}
               <p 
-                className="text-white/90 text-center md:text-left max-w-2xl mb-6"
+                className="text-white/90 text-center md:text-left max-w-2xl mb-4"
                 style={{
                   fontFamily: "Verdana, sans-serif",
-                  fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
-                  lineHeight: 1.5,
+                  fontSize: "clamp(0.875rem, 1.3vw, 1.125rem)",
+                  lineHeight: 1.4,
                   textShadow: "0 2px 10px rgba(0,0,0,0.8)"
                 }}
               >
@@ -181,7 +181,7 @@ To read the complete story, purchase the full book on Amazon, Kindle, or Audible
             </div>
 
             {/* 3D Book Mockup with Sample Chapter Button */}
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center gap-3">
               <motion.div 
                 className="flex-shrink-0"
                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -197,8 +197,8 @@ To read the complete story, purchase the full book on Amazon, Kindle, or Audible
                 <div 
                   className="relative"
                   style={{
-                    width: '140px',
-                    height: '200px',
+                    width: '120px',
+                    height: '170px',
                     perspective: '1000px'
                   }}
                 >
@@ -276,18 +276,18 @@ To read the complete story, purchase the full book on Amazon, Kindle, or Audible
           </div>
           
           {/* Review Quote - Full Width Centered */}
-          <figure className="bg-black/40 backdrop-blur-md border border-white/20 rounded-lg p-6 max-w-2xl w-full" aria-label="Book review">
-            <div className="flex gap-1 mb-3 justify-center" role="img" aria-label="5 out of 5 stars">
+          <figure className="bg-black/40 backdrop-blur-md border border-white/20 rounded-lg p-4 md:p-5 max-w-2xl w-full" aria-label="Book review">
+            <div className="flex gap-1 mb-2 justify-center" role="img" aria-label="5 out of 5 stars">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
               ))}
             </div>
             <blockquote 
-              className="text-white text-center italic mb-3"
+              className="text-white text-center italic mb-2"
               style={{
                 fontFamily: "'Times New Roman', Times, serif",
-                fontSize: "clamp(0.95rem, 1.3vw, 1.125rem)",
-                lineHeight: 1.5
+                fontSize: "clamp(0.875rem, 1.2vw, 1rem)",
+                lineHeight: 1.4
               }}
             >
               "{review}"
@@ -296,7 +296,7 @@ To read the complete story, purchase the full book on Amazon, Kindle, or Audible
               className="text-white/90 text-center"
               style={{
                 fontFamily: "'Times New Roman', Times, serif",
-                fontSize: "0.95rem"
+                fontSize: "0.875rem"
               }}
             >
               — {reviewer}

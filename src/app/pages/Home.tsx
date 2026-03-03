@@ -305,7 +305,7 @@ export function Home() {
               <form 
                 id='gform' 
                 method="POST" 
-                action="https://script.google.com/macros/s/AKfycbxTwsMNSbtWRXYlXpNeiQdXFHSxFiClnz_77biETvjN0JY7Tce_nyGmSbNw00aYUw/exec"
+                action="https://script.google.com/macros/s/AKfycbwdbJir9Y2w_HuA9FHxVF42Bvvbnt6wdFQU5YQAfHWaiNKjoZ794__M8RyAzJW3DGgn/exec"
                 className="flex gap-2"
                 onSubmit={handleFormSubmit}
                 aria-label="Newsletter subscription form"
